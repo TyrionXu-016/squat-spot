@@ -1,0 +1,68 @@
+<view class="page checkin-page">
+  <view class="checkin-header">
+    <view class="section-title">今天感觉如何？</view>
+  </view>
+
+  <view class="status-selector card">
+    <view
+      wx:for="{{statusOptions}}"
+      wx:key="value"
+      class="status-option {{status === item.value ? 'status-option-active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="selectStatus"
+    >
+      <view class="status-dot status-{{item.value}}"></view>
+      <view>{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="form-block">
+    <view class="section-title">在哪里？</view>
+    <view class="tag-row">
+      <view
+      wx:for="{{tagOptions}}"
+      wx:key="name"
+      class="tag {{item.active ? 'tag-active' : ''}}"
+      data-tag="{{item.name}}"
+      bindtap="toggleTag"
+    >{{item.name}}</view>
+    </view>
+  </view>
+
+  <view class="form-block">
+    <view class="section-title">想说点什么？</view>
+    <textarea
+      class="note-input"
+      maxlength="120"
+      placeholder="可选，记录你的感受..."
+      value="{{note}}"
+      bindinput="onNoteInput"
+    />
+    <view class="note-count">{{noteCount}}/120</view>
+  </view>
+
+  <view class="form-block">
+    <view class="setting-title-row">
+      <view class="section-title">位置记录设置</view>
+      <view class="setting-help">你的隐私，你做主</view>
+    </view>
+
+    <view class="card location-card">
+      <view
+        wx:for="{{locationOptions}}"
+        wx:key="value"
+        class="location-row {{locationMode === item.value ? 'location-row-active' : ''}}"
+        data-value="{{item.value}}"
+        bindtap="selectLocationMode"
+      >
+        <view class="location-copy">
+          <view class="location-title">{{item.title}}</view>
+          <view class="location-desc">{{item.desc}}</view>
+        </view>
+        <view class="radio {{locationMode === item.value ? 'radio-active' : ''}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <button class="primary-button submit-button" loading="{{saving}}" bindtap="submit">提交记录</button>
+</view>

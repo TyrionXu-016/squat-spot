@@ -1,0 +1,142 @@
+.checkin-page {
+  padding-bottom: 44rpx;
+}
+
+.checkin-header {
+  margin-top: 48rpx;
+}
+
+.status-selector {
+  margin-top: 22rpx;
+  min-height: 140rpx;
+  display: flex;
+  overflow: hidden;
+}
+
+.status-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4e5854;
+  font-size: 28rpx;
+  border-right: 1rpx solid #e9efeb;
+}
+
+.status-option:last-child {
+  border-right: 0;
+}
+
+.status-option-active {
+  background: #ecf8ef;
+  color: #168346;
+  box-shadow: inset 0 0 0 2rpx #29a85d;
+  font-weight: 800;
+}
+
+.status-option .status-dot {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 0;
+  margin-bottom: 14rpx;
+}
+
+.form-block {
+  margin-top: 42rpx;
+}
+
+.tag-row {
+  margin-top: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18rpx;
+}
+
+.note-input {
+  width: 100%;
+  min-height: 178rpx;
+  margin-top: 22rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: 1rpx solid #e1ebe4;
+  background: #ffffff;
+  color: #1f2d24;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.note-count {
+  margin-top: -42rpx;
+  padding-right: 22rpx;
+  text-align: right;
+  color: #9aa49f;
+  font-size: 24rpx;
+  position: relative;
+}
+
+.setting-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.setting-help {
+  color: #7d8984;
+  font-size: 24rpx;
+}
+
+.location-card {
+  margin-top: 22rpx;
+  overflow: hidden;
+}
+
+.location-row {
+  min-height: 112rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #edf2ee;
+}
+
+.location-row:last-child {
+  border-bottom: 0;
+}
+
+.location-row-active {
+  background: #ecf8ef;
+  box-shadow: inset 0 0 0 2rpx #29a85d;
+}
+
+.location-copy {
+  flex: 1;
+}
+
+.location-title {
+  color: #243229;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.location-desc {
+  margin-top: 8rpx;
+  color: #7d8984;
+  font-size: 24rpx;
+}
+
+.radio {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 999rpx;
+  border: 3rpx solid #c7d2cc;
+}
+
+.radio-active {
+  border-color: #29a85d;
+  background: #29a85d;
+  box-shadow: inset 0 0 0 8rpx #ffffff;
+}
+
+.submit-button {
+  margin-top: 56rpx;
+}

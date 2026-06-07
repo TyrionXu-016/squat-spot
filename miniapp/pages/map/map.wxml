@@ -1,0 +1,46 @@
+<view class="map-page">
+  <view class="map-tabs">
+    <view
+      wx:for="{{rangeOptions}}"
+      wx:key="value"
+      class="map-tab {{item.active ? 'map-tab-active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="selectRange"
+    >{{item.label}}</view>
+  </view>
+
+  <map
+    class="spot-map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    scale="13"
+    bindmarkertap="onMarkerTap"
+  ></map>
+
+  <view wx:if="{{loading}}" class="map-message">地图加载中...</view>
+  <view wx:elif="{{error}}" class="map-message error">{{error}}</view>
+  <view wx:elif="{{!hasMarkers}}" class="map-message">
+    这个时间范围还没有带位置的记录。
+    <button class="quick-link" bindtap="goCheckin">去蹲一下</button>
+  </view>
+
+  <view class="map-sheet">
+    <view class="sheet-handle"></view>
+    <view wx:if="{{selected}}">
+      <view class="sheet-head">
+        <view class="status-dot {{selected.statusClass}}"></view>
+        <view class="sheet-title">{{selected.dateTimeText}}</view>
+        <view class="record-status">{{selected.statusText}}</view>
+      </view>
+      <view class="sheet-row">{{selected.placeName || '未记录地点'}}</view>
+      <view class="sheet-row muted">{{selected.locationText}}</view>
+      <view class="sheet-note">{{selected.note || selected.tagText}}</view>
+    </view>
+    <view wx:else>
+      <view class="sheet-title">我的足迹</view>
+      <view class="sheet-row muted">点击地图点位查看对应记录。</view>
+      <view class="privacy-hint">位置只展示你自己的记录。</view>
+    </view>
+  </view>
+</view>

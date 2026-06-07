@@ -1,0 +1,15 @@
+{
+  "description": "蹲点儿 / Squat Spot",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "latest",
+  "appid": "touristappid",
+  "projectname": "squat-spot",
+  "condition": {}
+}

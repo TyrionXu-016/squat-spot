@@ -1,0 +1,221 @@
+.home-page {
+  padding-bottom: 44rpx;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-name {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #143c28;
+}
+
+.brand-en {
+  margin-top: 4rpx;
+  font-size: 24rpx;
+  color: #6c7773;
+}
+
+.mini-menu {
+  width: 112rpx;
+  height: 56rpx;
+  border: 1rpx solid #e5ebe7;
+  border-radius: 32rpx;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+}
+
+.hero {
+  position: relative;
+  margin-top: 76rpx;
+  min-height: 236rpx;
+}
+
+.breeze-line {
+  width: 380rpx;
+  height: 28rpx;
+  margin-top: 38rpx;
+  border-bottom: 4rpx solid #f3c63a;
+  border-radius: 50%;
+  transform: skewX(-18deg);
+}
+
+.leaf-mark {
+  position: absolute;
+  right: 58rpx;
+  top: 96rpx;
+  width: 128rpx;
+  height: 104rpx;
+}
+
+.leaf {
+  position: absolute;
+  width: 58rpx;
+  height: 28rpx;
+  border-radius: 58rpx 0 58rpx 0;
+  background: #78c85b;
+}
+
+.leaf-a {
+  right: 24rpx;
+  top: 0;
+  transform: rotate(-34deg);
+}
+
+.leaf-b {
+  right: 56rpx;
+  top: 44rpx;
+  transform: rotate(24deg);
+}
+
+.leaf-c {
+  right: 4rpx;
+  top: 52rpx;
+  transform: rotate(-8deg);
+}
+
+.checkin-button {
+  margin-top: 20rpx;
+}
+
+.stats-card {
+  height: 160rpx;
+  margin-top: 38rpx;
+  padding: 28rpx 0;
+  display: flex;
+  align-items: center;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #17241d;
+}
+
+.stat-label {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #7c8782;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 86rpx;
+  background: #e8eee9;
+}
+
+.privacy-row {
+  margin-top: 28rpx;
+  min-height: 78rpx;
+  border-radius: 16rpx;
+  background: #ecf8ef;
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx;
+}
+
+.privacy-badge {
+  min-width: 72rpx;
+  height: 38rpx;
+  border-radius: 10rpx;
+  color: #168346;
+  border: 1rpx solid #bfe8cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.privacy-copy {
+  flex: 1;
+  margin-left: 18rpx;
+  color: #31503d;
+  font-size: 28rpx;
+}
+
+.privacy-arrow {
+  color: #1d5134;
+  font-size: 42rpx;
+}
+
+.section-head {
+  margin-top: 42rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-link {
+  color: #8b9691;
+  font-size: 26rpx;
+}
+
+.recent-card {
+  margin-top: 18rpx;
+  overflow: hidden;
+}
+
+.record-row {
+  min-height: 108rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #edf2ee;
+}
+
+.record-row:last-child {
+  border-bottom: 0;
+}
+
+.record-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #243229;
+}
+
+.record-meta {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #7c8782;
+}
+
+.record-status {
+  min-width: 84rpx;
+  height: 46rpx;
+  border-radius: 12rpx;
+  background: #e8f7ed;
+  color: #168346;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.empty-card {
+  margin-top: 18rpx;
+  padding: 34rpx 28rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  color: #7c8782;
+  border: 1rpx solid #e6eee8;
+}

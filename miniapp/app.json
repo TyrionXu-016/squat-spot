@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/checkin/checkin",
+    "pages/records/records",
+    "pages/map/map"
+  ],
+  "window": {
+    "navigationBarTitleText": "蹲点儿",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8fbf8"
+  },
+  "tabBar": {
+    "color": "#7d8582",
+    "selectedColor": "#29a85d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "地图"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

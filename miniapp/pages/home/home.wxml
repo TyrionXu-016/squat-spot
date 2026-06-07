@@ -1,0 +1,65 @@
+<view class="page home-page">
+  <view class="brand-row">
+    <view>
+      <view class="brand-name">蹲点儿</view>
+      <view class="brand-en">Squat Spot</view>
+    </view>
+    <view class="mini-menu">•••</view>
+  </view>
+
+  <view class="hero">
+    <view class="screen-title">今天顺畅吗</view>
+    <view class="screen-subtitle">记录每天的顺畅足迹</view>
+    <view class="breeze-line"></view>
+    <view class="leaf-mark">
+      <view class="leaf leaf-a"></view>
+      <view class="leaf leaf-b"></view>
+      <view class="leaf leaf-c"></view>
+    </view>
+  </view>
+
+  <button class="primary-button checkin-button" bindtap="goCheckin">蹲一下</button>
+
+  <view class="card stats-card">
+    <view class="stat-item">
+      <view class="stat-value">{{summary.monthCount}}</view>
+      <view class="stat-label">本月记录</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-value">{{summary.streakDays}}</view>
+      <view class="stat-label">连续记录</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-value">{{summary.lastCheckinText || '暂无'}}</view>
+      <view class="stat-label">最近一次</view>
+    </view>
+  </view>
+
+  <view class="privacy-row">
+    <view class="privacy-badge">隐私</view>
+    <view class="privacy-copy">默认不记录位置</view>
+    <view class="privacy-arrow">›</view>
+  </view>
+
+  <view class="section-head">
+    <view class="section-title">最近记录</view>
+    <view class="section-link" bindtap="goRecords">查看全部 ›</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="empty-card">加载中...</view>
+  <view wx:elif="{{error}}" class="empty-card">{{error}}</view>
+  <view wx:elif="{{!hasRecentCheckins}}" class="empty-card">还没有记录，今天可以先蹲一下。</view>
+
+  <view wx:else class="card recent-card">
+    <view wx:for="{{recentCheckins}}" wx:key="id" class="record-row">
+      <view class="status-dot {{item.statusClass}}"></view>
+      <view class="record-main">
+        <view class="record-title">{{item.dateTimeText}}</view>
+        <view class="record-meta">{{item.placeName || '未记录地点'}} · {{item.locationText}}</view>
+      </view>
+      <view class="record-status">{{item.statusText}}</view>
+    </view>
+  </view>
+</view>

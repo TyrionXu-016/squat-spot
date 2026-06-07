@@ -1,0 +1,61 @@
+<view class="page records-page">
+  <view class="screen-title small-title">历史记录</view>
+  <view class="screen-subtitle">按月份和标签回看自己的顺畅足迹。</view>
+
+  <scroll-view class="tag-filter-scroll" scroll-x="true" show-scrollbar="false">
+    <view class="tag-filter-row">
+      <view
+        wx:for="{{tagFilters}}"
+        wx:key="name"
+        class="tag {{item.active ? 'tag-active' : ''}}"
+        data-name="{{item.name}}"
+        bindtap="selectTag"
+      >{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{loading}}" class="empty-card">加载中...</view>
+  <view wx:elif="{{error}}" class="empty-card">{{error}}</view>
+  <view wx:elif="{{!hasRecords}}" class="empty-card">暂时没有符合条件的记录。</view>
+
+  <view wx:else class="card records-card">
+    <view
+      wx:for="{{records}}"
+      wx:key="id"
+      class="record-row"
+      data-id="{{item.id}}"
+      bindtap="openDetail"
+    >
+      <view class="status-dot {{item.statusClass}}"></view>
+      <view class="record-main">
+        <view class="record-title">{{item.dateTimeText}}</view>
+        <view class="record-meta">{{item.placeName || '未记录地点'}} · {{item.locationText}}</view>
+        <view class="record-note">{{item.note || item.tagText}}</view>
+      </view>
+      <view class="record-status">{{item.statusText}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{showDetail}}" class="modal-mask" bindtap="closeDetail">
+    <view class="detail-sheet" catchtap="noop">
+      <view class="sheet-handle"></view>
+      <view class="detail-head">
+        <view>
+          <view class="detail-title">{{detail.dateTimeText}}</view>
+          <view class="detail-sub">{{detail.placeName || '未记录地点'}}</view>
+        </view>
+        <view class="record-status">{{detail.statusText}}</view>
+      </view>
+      <view class="detail-row">
+        <view class="detail-label">标签</view>
+        <view class="detail-value">{{detail.tagText}}</view>
+      </view>
+      <view class="detail-row">
+        <view class="detail-label">位置</view>
+        <view class="detail-value">{{detail.locationText}}</view>
+      </view>
+      <view class="detail-note">{{detail.note || '这条记录没有备注。'}}</view>
+      <button class="delete-button" bindtap="deleteRecord">删除记录</button>
+    </view>
+  </view>
+</view>
