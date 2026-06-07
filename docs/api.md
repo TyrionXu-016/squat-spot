@@ -3,7 +3,8 @@
 Base URL：
 
 - 本地开发：`http://127.0.0.1:3000/api`
-- 生产环境：后续替换为 HTTPS 域名
+- Vercel 预览/生产：`https://<your-vercel-domain>/api`
+- 微信正式版：建议使用自己的 HTTPS 域名，如 `https://api.example.com/api`
 
 所有私有接口使用：
 
@@ -24,6 +25,8 @@ Authorization: Bearer <token>
 ```
 
 开发期 `WECHAT_MOCK_LOGIN=true` 时，后端会返回 `mock_<code>` openid。
+
+生产环境应配置 `WECHAT_MOCK_LOGIN=false`、`WECHAT_APP_ID` 和 `WECHAT_APP_SECRET`。
 
 响应：
 

@@ -8,3 +8,4 @@ supabase/.branches/
 supabase/.temp/
 coverage/
 *.log
+.vercel

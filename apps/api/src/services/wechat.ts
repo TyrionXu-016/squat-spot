@@ -9,8 +9,12 @@ interface WechatSessionResponse {
 }
 
 export async function resolveWechatOpenid(code: string, config: AppConfig): Promise<string> {
-  if (config.WECHAT_MOCK_LOGIN || !config.WECHAT_APP_ID || !config.WECHAT_APP_SECRET) {
+  if (config.WECHAT_MOCK_LOGIN) {
     return `mock_${code || "dev"}`;
+  }
+
+  if (!config.WECHAT_APP_ID || !config.WECHAT_APP_SECRET) {
+    throw new Error("WeChat credentials are required when mock login is disabled");
   }
 
   const url = new URL("https://api.weixin.qq.com/sns/jscode2session");

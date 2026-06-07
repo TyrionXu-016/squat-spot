@@ -5,11 +5,11 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
   HOST: z.string().default("127.0.0.1"),
   DATABASE_URL: z.string().default("postgresql://postgres:postgres@127.0.0.1:54322/postgres"),
+  DATABASE_POOL_MAX: z.coerce.number().int().positive().default(5),
   JWT_SECRET: z.string().min(12).default("dev-only-change-me"),
   JWT_EXPIRES_IN: z.string().default("30d"),
   WECHAT_MOCK_LOGIN: z
     .union([z.string(), z.boolean()])
-    .default("true")
     .transform((value) => value === true || value === "true"),
   WECHAT_APP_ID: z.string().optional(),
   WECHAT_APP_SECRET: z.string().optional(),
@@ -19,8 +19,12 @@ const envSchema = z.object({
 export type AppConfig = z.infer<typeof envSchema>;
 
 export function loadConfig(overrides: Partial<AppConfig> = {}): AppConfig {
-  return envSchema.parse({
+  const input: Record<string, unknown> = {
     ...process.env,
     ...overrides
-  });
+  };
+
+  input.WECHAT_MOCK_LOGIN ??= input.NODE_ENV === "production" ? "false" : "true";
+
+  return envSchema.parse(input);
 }

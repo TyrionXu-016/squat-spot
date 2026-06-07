@@ -25,6 +25,23 @@ describe("Squat Spot API", () => {
     await app.close();
   });
 
+  it("does not use mock login when mock mode is disabled", async () => {
+    const app = buildApp({
+      repository: new MemoryRepository(),
+      config: { NODE_ENV: "test", JWT_SECRET: "test-secret-key", WECHAT_MOCK_LOGIN: false }
+    });
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/api/auth/wechat-login",
+      payload: { code: "dev-code" }
+    });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.json().message).toBe("WeChat credentials are required when mock login is disabled");
+    await app.close();
+  });
+
   it("creates checkins, lists records, returns map points and updates stats", async () => {
     const app = buildApp({
       repository: new MemoryRepository(),

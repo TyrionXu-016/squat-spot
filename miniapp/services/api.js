@@ -49,7 +49,7 @@ function request(path, options) {
         reject({
           statusCode: 0,
           data: error,
-          message: "无法连接本地 API"
+          message: "无法连接 API"
         });
       }
     });

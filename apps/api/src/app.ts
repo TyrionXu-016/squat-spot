@@ -18,7 +18,7 @@ interface BuildAppOptions {
 
 export function buildApp(options: BuildAppOptions = {}) {
   const config = loadConfig(options.config);
-  const repository = options.repository ?? new PgRepository(config.DATABASE_URL);
+  const repository = options.repository ?? new PgRepository(config.DATABASE_URL, config.DATABASE_POOL_MAX);
   const app = Fastify({
     logger: config.NODE_ENV !== "test"
   });
@@ -56,6 +56,7 @@ export function buildApp(options: BuildAppOptions = {}) {
   });
 
   app.get("/health", async () => ({ ok: true }));
+  app.get("/api/health", async () => ({ ok: true }));
 
   return app;
 }

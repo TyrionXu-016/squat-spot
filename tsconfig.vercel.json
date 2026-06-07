@@ -1,0 +1,8 @@
+{
+  "extends": "./apps/api/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "."
+  },
+  "include": ["api/**/*.ts", "apps/api/src/**/*.ts", "vercel/**/*.ts"]
+}

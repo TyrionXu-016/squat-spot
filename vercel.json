@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "npm run api:build",
+  "outputDirectory": ".",
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
+  ]
+}

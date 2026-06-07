@@ -75,8 +75,11 @@ function mapCheckin(row: DbCheckinRow): Checkin {
 export class PgRepository implements AppRepository {
   private readonly pool: pg.Pool;
 
-  constructor(databaseUrl: string) {
-    this.pool = new Pool({ connectionString: databaseUrl });
+  constructor(databaseUrl: string, maxConnections = 5) {
+    this.pool = new Pool({
+      connectionString: databaseUrl,
+      max: maxConnections
+    });
   }
 
   async close(): Promise<void> {
