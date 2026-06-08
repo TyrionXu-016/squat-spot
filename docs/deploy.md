@@ -54,8 +54,8 @@ curl -X POST https://<your-vercel-domain>/api/auth/wechat-login \
 
 小程序会按环境自动选择 API 地址：
 
-- `develop`：`http://127.0.0.1:3000/api`
-- `trial` / `release`：`https://squat.tyrion.space/api`
+- 默认：`https://squat.tyrion.space/api`
+- 如需本地联调 Fastify：先运行 `npm run api:dev`，再将 `miniapp/app.js` 里的 `USE_LOCAL_API_IN_DEVELOP` 改为 `true`
 
 微信正式版还需要在微信公众平台配置 `request 合法域名`。
 
