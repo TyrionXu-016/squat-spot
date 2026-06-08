@@ -55,6 +55,12 @@ curl -X POST https://<your-vercel-domain>/api/auth/wechat-login \
 小程序会按环境自动选择 API 地址：
 
 - `develop`：`http://127.0.0.1:3000/api`
-- `trial` / `release`：`https://squat-spot.vercel.app/api`
+- `trial` / `release`：`https://squat.tyrion.space/api`
 
 微信正式版还需要在微信公众平台配置 `request 合法域名`。
+
+当前 Vercel 自定义域名需要在 DNS 服务商处添加：
+
+```text
+A    squat    76.76.21.21
+```

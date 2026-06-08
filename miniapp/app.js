@@ -4,7 +4,7 @@ function resolveApiBaseUrl() {
     const envVersion = account && account.miniProgram ? account.miniProgram.envVersion : "develop";
 
     if (envVersion === "release" || envVersion === "trial") {
-      return "https://squat-spot.vercel.app/api";
+      return "https://squat.tyrion.space/api";
     }
   } catch (error) {
     // Keep local development usable if account info is unavailable in tooling.

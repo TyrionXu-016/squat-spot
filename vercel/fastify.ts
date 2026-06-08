@@ -1,13 +1,13 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import type { FastifyInstance } from "fastify";
-import { buildApp } from "../apps/api/src/app.js";
 
 let appPromise: Promise<FastifyInstance> | undefined;
 
 async function getApp(): Promise<FastifyInstance> {
   if (!appPromise) {
-    const app = buildApp();
     appPromise = (async () => {
+      const { buildApp } = await import("../apps/api/src/app.js");
+      const app = buildApp();
       await app.ready();
       return app;
     })();
