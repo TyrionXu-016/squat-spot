@@ -51,6 +51,10 @@ Page({
     wx.navigateTo({ url: "/pages/checkin/checkin" });
   },
 
+  goPrivacySettings() {
+    wx.navigateTo({ url: "/pages/checkin/checkin?focus=location" });
+  },
+
   goRecords() {
     wx.switchTab({ url: "/pages/records/records" });
   }

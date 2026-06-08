@@ -25,7 +25,24 @@ Page({
     noteCount: 0,
     locationMode: "none",
     placeName: "家里",
+    highlightLocation: false,
     saving: false
+  },
+
+  onLoad(options) {
+    if (options && options.focus === "location") {
+      setTimeout(() => {
+        this.setData({ highlightLocation: true });
+        wx.pageScrollTo({
+          selector: ".location-settings",
+          duration: 280
+        });
+      }, 120);
+
+      setTimeout(() => {
+        this.setData({ highlightLocation: false });
+      }, 1500);
+    }
   },
 
   selectStatus(event) {

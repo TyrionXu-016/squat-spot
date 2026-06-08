@@ -41,7 +41,7 @@
     <view class="note-count">{{noteCount}}/120</view>
   </view>
 
-  <view class="form-block">
+  <view class="form-block location-settings {{highlightLocation ? 'location-settings-highlight' : ''}}">
     <view class="setting-title-row">
       <view class="section-title">位置记录设置</view>
       <view class="setting-help">你的隐私，你做主</view>
