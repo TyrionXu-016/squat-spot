@@ -114,6 +114,44 @@
   font-size: 26rpx;
 }
 
+.footprint-list {
+  margin-top: 18rpx;
+  max-height: 280rpx;
+  overflow: auto;
+}
+
+.footprint-row {
+  min-height: 96rpx;
+  padding: 0 4rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #edf2ee;
+}
+
+.footprint-row:last-child {
+  border-bottom: 0;
+}
+
+.footprint-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.footprint-title {
+  color: #243229;
+  font-size: 28rpx;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.footprint-meta {
+  margin-top: 8rpx;
+  color: #7d8984;
+  font-size: 24rpx;
+}
+
 .privacy-hint {
   margin-top: 24rpx;
   padding: 20rpx 24rpx;

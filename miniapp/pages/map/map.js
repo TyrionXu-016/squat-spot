@@ -40,7 +40,7 @@ Page({
   },
 
   loadMap() {
-    this.setData({ loading: true, error: "" });
+    this.setData({ loading: true, error: "", selected: null });
     api.request("/checkins/map?range=" + this.data.range)
       .then((payload) => {
         const points = payload.markers || [];
@@ -61,11 +61,26 @@ Page({
             display: "BYCLICK"
           }
         }));
+        const markerRecords = points.map((point, index) => Object.assign(
+          decorateCheckin({
+            id: point.id,
+            status: point.status,
+            locationMode: point.locationMode,
+            checkedAt: point.checkedAt,
+            placeName: point.title,
+            tags: []
+          }),
+          {
+            markerId: index + 1,
+            latitude: point.latitude,
+            longitude: point.longitude
+          }
+        ));
 
         this.setData({
           markers,
           hasMarkers: markers.length > 0,
-          markerRecords: points,
+          markerRecords,
           latitude: points[0] ? points[0].latitude : 39.9042,
           longitude: points[0] ? points[0].longitude : 116.4074,
           loading: false
@@ -84,7 +99,17 @@ Page({
     const marker = this.data.markers.find((item) => item.id === markerId);
     if (!marker) return;
 
-    api.request("/checkins/" + marker.apiId)
+    this.loadCheckinDetail(marker.apiId);
+  },
+
+  selectRecord(event) {
+    const id = event.currentTarget.dataset.id;
+    if (!id) return;
+    this.loadCheckinDetail(id);
+  },
+
+  loadCheckinDetail(id) {
+    api.request("/checkins/" + id)
       .then((payload) => {
         this.setData({ selected: decorateCheckin(payload.checkin) });
       })

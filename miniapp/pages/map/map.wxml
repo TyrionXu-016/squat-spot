@@ -37,10 +37,31 @@
       <view class="sheet-row muted">{{selected.locationText}}</view>
       <view class="sheet-note">{{selected.note || selected.tagText}}</view>
     </view>
+    <view wx:elif="{{hasMarkers}}">
+      <view class="sheet-title">我的足迹</view>
+      <view class="sheet-row muted">点击记录或地图点位查看详情。</view>
+      <view class="footprint-list">
+        <view
+          wx:for="{{markerRecords}}"
+          wx:key="id"
+          class="footprint-row"
+          data-id="{{item.id}}"
+          bindtap="selectRecord"
+        >
+          <view class="status-dot {{item.statusClass}}"></view>
+          <view class="footprint-main">
+            <view class="footprint-title">{{item.placeName || '蹲点记录'}}</view>
+            <view class="footprint-meta">{{item.dateTimeText}} · {{item.locationText}}</view>
+          </view>
+          <view class="record-status">{{item.statusText}}</view>
+        </view>
+      </view>
+      <view class="privacy-hint">位置只展示你自己的记录。</view>
+    </view>
     <view wx:else>
       <view class="sheet-title">我的足迹</view>
-      <view class="sheet-row muted">点击地图点位查看对应记录。</view>
-      <view class="privacy-hint">位置只展示你自己的记录。</view>
+      <view class="sheet-row muted">这个时间范围还没有带位置的记录。</view>
+      <view class="privacy-hint">选择模糊位置或精确位置后，记录会出现在地图上。</view>
     </view>
   </view>
 </view>
