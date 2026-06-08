@@ -2,27 +2,9 @@
   padding-bottom: 44rpx;
 }
 
-.brand-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand-name {
-  font-size: 40rpx;
-  font-weight: 800;
-  color: #143c28;
-}
-
-.brand-en {
-  margin-top: 4rpx;
-  font-size: 24rpx;
-  color: #6c7773;
-}
-
 .hero {
   position: relative;
-  margin-top: 76rpx;
+  margin-top: 28rpx;
   min-height: 236rpx;
 }
 

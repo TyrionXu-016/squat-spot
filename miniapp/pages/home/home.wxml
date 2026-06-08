@@ -1,11 +1,4 @@
 <view class="page home-page">
-  <view class="brand-row">
-    <view>
-      <view class="brand-name">蹲点儿</view>
-      <view class="brand-en">Squat Spot</view>
-    </view>
-  </view>
-
   <view class="hero">
     <view class="screen-title">今天顺畅吗</view>
     <view class="screen-subtitle">记录每天的顺畅足迹</view>
