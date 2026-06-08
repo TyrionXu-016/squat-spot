@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildApp } from "../src/app.js";
+import { withLibpqSslCompatibility } from "../src/db/connection.js";
 import { MemoryRepository } from "../src/db/memoryRepository.js";
 
 async function login(app: ReturnType<typeof buildApp>) {
@@ -13,6 +14,22 @@ async function login(app: ReturnType<typeof buildApp>) {
 }
 
 describe("Squat Spot API", () => {
+  it("adds libpq compatibility for Supabase sslmode=require URLs", () => {
+    expect(
+      withLibpqSslCompatibility(
+        "postgresql://postgres.project:secret@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres?sslmode=require"
+      )
+    ).toBe(
+      "postgresql://postgres.project:secret@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres?sslmode=require&uselibpqcompat=true"
+    );
+
+    expect(
+      withLibpqSslCompatibility(
+        "postgresql://postgres.project:secret@host/postgres?sslmode=require&uselibpqcompat=true"
+      )
+    ).toBe("postgresql://postgres.project:secret@host/postgres?sslmode=require&uselibpqcompat=true");
+  });
+
   it("requires bearer auth for private endpoints", async () => {
     const app = buildApp({
       repository: new MemoryRepository(),

@@ -9,7 +9,7 @@
 在 Vercel Project Settings 或 CLI 中配置：
 
 ```bash
-DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres?sslmode=require
+DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres?sslmode=require&uselibpqcompat=true
 DATABASE_POOL_MAX=5
 JWT_SECRET=<random-long-secret>
 JWT_EXPIRES_IN=30d
@@ -21,6 +21,8 @@ NODE_ENV=production
 ```
 
 当前 Supabase project ref 是 `rbdguylxavbfxgniudmc`。数据库密码在本机 `supabase/.temp/remote-db-password`，不要提交到 Git。
+
+代码会兼容旧的 `?sslmode=require` 写法，运行时自动补上 `uselibpqcompat=true`，避免 Vercel 上连接 Supabase pooler 时触发证书链校验错误。
 
 ## CLI 部署流程
 

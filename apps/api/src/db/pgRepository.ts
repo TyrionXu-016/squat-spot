@@ -10,6 +10,7 @@ import type {
 } from "../types/domain.js";
 import { dateKey, nextMonth, startOfMonth, startOfRange } from "../utils/dates.js";
 import { normalizeLocation } from "../utils/location.js";
+import { withLibpqSslCompatibility } from "./connection.js";
 import type { AppRepository, TagRecord } from "./repository.js";
 
 const { Pool } = pg;
@@ -77,7 +78,7 @@ export class PgRepository implements AppRepository {
 
   constructor(databaseUrl: string, maxConnections = 5) {
     this.pool = new Pool({
-      connectionString: databaseUrl,
+      connectionString: withLibpqSslCompatibility(databaseUrl),
       max: maxConnections
     });
   }
