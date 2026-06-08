@@ -11,8 +11,8 @@ const tagNames = ["家里", "公司", "咖啡后", "火锅后", "旅行中"];
 
 const locationOptions = [
   { value: "none", title: "不记录位置", desc: "仅记录时间和标签" },
-  { value: "fuzzy", title: "模糊位置", desc: "显示大致区域" },
-  { value: "precise", title: "精确位置", desc: "显示具体地点" }
+  { value: "fuzzy", title: "模糊位置", desc: "提交时获取当前位置，并只保存大致区域" },
+  { value: "precise", title: "精确位置", desc: "提交时获取当前位置，并保存具体点位" }
 ];
 
 Page({
@@ -25,7 +25,6 @@ Page({
     note: "",
     noteCount: 0,
     locationMode: "none",
-    placeName: "家里",
     saving: false
   },
 
@@ -67,34 +66,60 @@ Page({
   },
 
   applyLocationMode(mode) {
-    this.setData({
-      locationMode: mode,
-      placeName: mode === "none" ? "家里" : this.data.placeName || "望京"
+    this.setData({ locationMode: mode });
+  },
+
+  resolvePlaceName(locationMode) {
+    if (locationMode === "fuzzy") return "附近位置";
+    if (locationMode === "precise") return "当前位置";
+    if (this.data.selectedTags.indexOf("家里") >= 0) return "家里";
+    if (this.data.selectedTags.indexOf("公司") >= 0) return "公司";
+    return null;
+  },
+
+  getCurrentLocation() {
+    return new Promise((resolve, reject) => {
+      wx.getLocation({
+        type: "gcj02",
+        success: resolve,
+        fail: reject
+      });
     });
   },
 
-  submit() {
-    if (this.data.saving) return;
+  buildPayload() {
     const locationMode = this.data.locationMode;
     const payload = {
       status: this.data.status,
       tags: this.data.selectedTags,
       note: this.data.note,
       locationMode,
-      placeName: this.data.placeName
+      placeName: this.resolvePlaceName(locationMode)
     };
 
-    if (locationMode !== "none") {
-      payload.lat = 39.904211;
-      payload.lng = 116.407395;
-      payload.placeName = locationMode === "fuzzy" ? "望京" : "望京 SOHO";
+    if (locationMode === "none") {
+      return Promise.resolve(payload);
     }
 
+    return this.getCurrentLocation()
+      .then((location) => Object.assign(payload, {
+        lat: location.latitude,
+        lng: location.longitude
+      }))
+      .catch(() => {
+        throw new Error("获取位置失败，请允许位置权限或选择不记录位置");
+      });
+  },
+
+  submit() {
+    if (this.data.saving) return;
+
     this.setData({ saving: true });
-    api.request("/checkins", {
-      method: "POST",
-      data: payload
-    })
+    this.buildPayload()
+      .then((payload) => api.request("/checkins", {
+        method: "POST",
+        data: payload
+      }))
       .then(() => {
         wx.showToast({ title: "打卡成功", icon: "success" });
         setTimeout(() => {

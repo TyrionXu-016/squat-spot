@@ -12,6 +12,14 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8fbf8"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于在你选择记录位置时保存本次打卡地点"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
   "tabBar": {
     "color": "#7d8582",
     "selectedColor": "#29a85d",
