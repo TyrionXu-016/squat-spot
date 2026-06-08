@@ -31,7 +31,7 @@
 
   <view class="privacy-row" bindtap="goPrivacySettings">
     <view class="privacy-badge">隐私</view>
-    <view class="privacy-copy">默认不记录位置</view>
+    <view class="privacy-copy">{{privacyText}}</view>
     <view class="privacy-arrow">›</view>
   </view>
 

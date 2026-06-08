@@ -91,10 +91,6 @@
   overflow: hidden;
 }
 
-.location-settings-highlight .location-card {
-  box-shadow: 0 0 0 4rpx rgba(41, 168, 93, 0.16), 0 18rpx 48rpx rgba(41, 168, 93, 0.14);
-}
-
 .location-row {
   min-height: 112rpx;
   padding: 0 24rpx;

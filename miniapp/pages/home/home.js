@@ -1,5 +1,6 @@
 const api = require("../../services/api");
 const { decorateCheckin, formatTime } = require("../../utils/format");
+const privacy = require("../../utils/privacy");
 
 Page({
   data: {
@@ -12,11 +13,14 @@ Page({
       favoritePlace: null,
       lastCheckinAt: null
     },
+    privacyText: "默认不记录位置",
     recentCheckins: [],
     hasRecentCheckins: false
   },
 
   onShow() {
+    const mode = privacy.getDefaultLocationMode();
+    this.setData({ privacyText: privacy.getLocationModeSummary(mode) });
     this.loadHome();
   },
 
@@ -52,7 +56,7 @@ Page({
   },
 
   goPrivacySettings() {
-    wx.navigateTo({ url: "/pages/checkin/checkin?focus=location" });
+    wx.navigateTo({ url: "/pages/privacy/privacy" });
   },
 
   goRecords() {

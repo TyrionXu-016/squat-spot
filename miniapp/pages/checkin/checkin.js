@@ -1,4 +1,5 @@
 const api = require("../../services/api");
+const privacy = require("../../utils/privacy");
 
 const statusOptions = [
   { value: "smooth", label: "顺畅" },
@@ -25,24 +26,11 @@ Page({
     noteCount: 0,
     locationMode: "none",
     placeName: "家里",
-    highlightLocation: false,
     saving: false
   },
 
-  onLoad(options) {
-    if (options && options.focus === "location") {
-      setTimeout(() => {
-        this.setData({ highlightLocation: true });
-        wx.pageScrollTo({
-          selector: ".location-settings",
-          duration: 280
-        });
-      }, 120);
-
-      setTimeout(() => {
-        this.setData({ highlightLocation: false });
-      }, 1500);
-    }
+  onLoad() {
+    this.applyLocationMode(privacy.getDefaultLocationMode());
   },
 
   selectStatus(event) {
@@ -75,7 +63,10 @@ Page({
   },
 
   selectLocationMode(event) {
-    const mode = event.currentTarget.dataset.value;
+    this.applyLocationMode(event.currentTarget.dataset.value);
+  },
+
+  applyLocationMode(mode) {
     this.setData({
       locationMode: mode,
       placeName: mode === "none" ? "家里" : this.data.placeName || "望京"

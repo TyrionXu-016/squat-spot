@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/checkin/checkin",
+    "pages/privacy/privacy",
     "pages/records/records",
     "pages/map/map"
   ],

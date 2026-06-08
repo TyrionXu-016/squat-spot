@@ -1,0 +1,30 @@
+<view class="page privacy-page">
+  <view class="screen-title">隐私设置</view>
+  <view class="screen-subtitle">设置每次打卡默认的位置记录方式</view>
+
+  <view class="privacy-summary">
+    <view class="summary-label">当前默认</view>
+    <view class="summary-value">{{currentSummary}}</view>
+  </view>
+
+  <view class="section-title option-title">位置记录方式</view>
+  <view class="card option-card">
+    <view
+      wx:for="{{options}}"
+      wx:key="value"
+      class="option-row {{item.active ? 'option-row-active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="selectMode"
+    >
+      <view class="option-copy">
+        <view class="option-name">{{item.title}}</view>
+        <view class="option-desc">{{item.desc}}</view>
+      </view>
+      <view class="radio {{item.active ? 'radio-active' : ''}}"></view>
+    </view>
+  </view>
+
+  <view class="privacy-note">
+    打卡时仍可单次修改。选择“不记录位置”时不会保存经纬度；选择“模糊位置”时会降低坐标精度。
+  </view>
+</view>

@@ -1,0 +1,91 @@
+.privacy-page {
+  padding-bottom: 48rpx;
+}
+
+.privacy-summary {
+  margin-top: 36rpx;
+  min-height: 112rpx;
+  padding: 24rpx 28rpx;
+  border-radius: 16rpx;
+  background: #ecf8ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.summary-label {
+  color: #168346;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.summary-value {
+  margin-top: 10rpx;
+  color: #173d28;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.option-title {
+  margin-top: 44rpx;
+}
+
+.option-card {
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+
+.option-row {
+  min-height: 128rpx;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #edf2ee;
+}
+
+.option-row:last-child {
+  border-bottom: 0;
+}
+
+.option-row-active {
+  background: #ecf8ef;
+}
+
+.option-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.option-name {
+  color: #243229;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.option-desc {
+  margin-top: 10rpx;
+  color: #7d8984;
+  font-size: 24rpx;
+  line-height: 1.4;
+}
+
+.radio {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 28rpx;
+  border-radius: 999rpx;
+  border: 3rpx solid #c7d2cc;
+}
+
+.radio-active {
+  border-color: #29a85d;
+  background: #29a85d;
+  box-shadow: inset 0 0 0 9rpx #ffffff;
+}
+
+.privacy-note {
+  margin-top: 28rpx;
+  color: #7d8984;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
